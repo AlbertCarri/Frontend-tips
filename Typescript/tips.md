@@ -1,5 +1,5 @@
 <div align="center">
-<h1>TYPESCRIPT</h1>
+<img src="/publics/typescript.png"/>
 </div>
 
 ## 1. Tipado de Variables y Constantes
