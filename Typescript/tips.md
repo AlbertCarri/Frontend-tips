@@ -1,6 +1,13 @@
+
+
 <div align="center">
 <img src="/publics/typescript.png"/>
 </div>
+
+<br>
+<br>
+
+# ` Usos de TypeScript `
 
 ## 1. Tipado de Variables y Constantes
 
@@ -91,7 +98,7 @@ export default function Card({ titulo, contenido }: CardProps): JSX.Element {
 
 ## 7. Uso de Hooks con TypeScript
 
-useState
+#### useState
 ```tsx
 import { useState } from "react";
 
@@ -107,7 +114,7 @@ const Contador = () => {
 };
 ```
 
-useEffect
+#### useEffect
 
 ```tsx
 import { useEffect, useState } from "react";
@@ -126,7 +133,7 @@ const Reloj = () => {
   return <p>Hora actual: {hora}</p>;
 };
 ```
-useRef
+#### useRef
 
 ```tsx
 import { useRef } from "react";
@@ -147,6 +154,74 @@ const InputFocus = () => {
     </div>
   );
 };
+```
+
+#### useActionState
+```tsx
+"use client";
+
+import { useActionState } from "react";
+import { useState } from "react";
+
+// Definimos el tipo de la acción
+type FormState = { mensaje: string };
+type FormAction = (prevState: FormState, formData: FormData) => Promise<FormState>;
+
+const enviarFormulario: FormAction = async (prevState, formData) => {
+  const nombre = formData.get("nombre") as string;
+  if (!nombre) {
+    return { mensaje: "El nombre es obligatorio" };
+  }
+
+  // Simulamos una petición asincrónica
+  await new Promise((resolve) => setTimeout(resolve, 1000));
+
+  return { mensaje: `Formulario enviado con éxito. Hola, ${nombre}!` };
+};
+
+export default function Formulario() {
+  const [state, action] = useActionState<FormState, FormAction>(enviarFormulario, {
+    mensaje: "",
+  });
+
+  return (
+    <form action={action}>
+      <input name="nombre" placeholder="Escribe tu nombre" />
+      <button type="submit">Enviar</button>
+      <p>{state.mensaje}</p>
+    </form>
+  );
+}
+```
+
+#### useTransition
+```tsx
+"use client";
+
+import { useTransition, useState } from "react";
+
+export default function CargaLenta() {
+  const [isPending, startTransition] = useTransition();
+  const [contador, setContador] = useState(0);
+
+  const manejarClick = () => {
+    startTransition(() => {
+      // Simulamos una tarea pesada con un setTimeout
+      setTimeout(() => {
+        setContador((prev) => prev + 1);
+      }, 1000);
+    });
+  };
+
+  return (
+    <div>
+      <p>Contador: {contador}</p>
+      <button onClick={manejarClick} disabled={isPending}>
+        {isPending ? "Cargando..." : "Incrementar"}
+      </button>
+    </div>
+  );
+}
 ```
 <br>
 
