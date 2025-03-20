@@ -23,29 +23,37 @@ type Coordenadas = { lat: number; lon: number };
 const ubicacion: Coordenadas = { lat: -34.6037, lon: -58.3816 };
 ```
 <br>
-Puntos Clave:
-let y const son las formas más comunes (evita var porque tiene un alcance más confuso).
 
-TypeScript puede inferir tipos automáticamente si inicializas una variable durante su declaración:
+### **Puntos Clave:**  
+
+
+**let** y **const**   son las formas más comunes (evita var porque tiene un alcance más confuso).
+
+<br>
+
+``TypeScript`` puede inferir tipos automáticamente si inicializas una variable durante su declaración:
 
 ```tsx
 let ciudad = "Buenos Aires"; // TypeScript infiere el tipo como string
 ```
 
+<br>
+
+
 ### Tipos Básicos
 TypeScript agrega tipos específicos para las variables. Los más comunes son:
 
-number: Números (enteros o decimales).
+``number``: Números (enteros o decimales).
 
-string: Cadenas de texto.
+``string``: Cadenas de texto.
 
-boolean: Verdadero o falso.
+``boolean``: Verdadero o falso.
 
-any: Puede contener cualquier tipo (úsalo con cuidado, porque pierde el beneficio del tipado).
+``any``: Puede contener cualquier tipo (úsalo con cuidado, porque pierde el beneficio del tipado).
 
-null y undefined: Representan ausencia de valor.
+``null y undefined``: Representan ausencia de valor.
 
-unknown: Similar a any, pero más seguro, ya que requiere que compruebes el tipo antes de usarlo.
+``unknown``: Similar a any, pero más seguro, ya que requiere que compruebes el tipo antes de usarlo.
 
 Ejemplo:
 
@@ -55,6 +63,9 @@ let mensaje: string = "¡Hola, TypeScript!";
 let activo: boolean = true;
 let sinTipo: any = "Podría ser cualquier cosa";
 ```
+
+<br>
+
 
 ### Tipos Complejos
 Además de los básicos, puedes manejar tipos más complejos para modelar datos:
@@ -76,6 +87,9 @@ Objetos: Puedes usar interfaces o tipos para describirlos (más sobre esto adela
 ```tsx
 let usuario: { nombre: string; edad: number } = { nombre: "Ana", edad: 25 };
 ```
+
+<br>
+
 
 ### Tipos Personalizados
 Con interfaces o type, puedes definir tus propios tipos para hacer el código más legible.
@@ -102,6 +116,9 @@ type Coordenadas = [number, number];
 let posicion: Coordenadas = [40.7128, -74.0060];
 ```
 
+<br>
+
+
 ### Uniones de Tipos
 Puedes permitir que una variable tenga más de un tipo usando el operador |.
 
@@ -110,6 +127,9 @@ let identificador: string | number;
 identificador = "123";
 identificador = 123; // Ambos son válidos
 ```
+
+<br>
+
 
 ### Tipos Opcionales y Valores por Defecto
 Propiedades Opcionales: Usa ? para declarar propiedades opcionales.
@@ -123,7 +143,8 @@ interface Producto {
 ```
 
 ## 2. Funciones con Tipado en TypeScript
-
+Tipo de Retorno de Funciones
+Especifica qué tipo de valor devuelve la función. TypeScript puede inferirlo, pero declararlo explícitamente es recomendable.
 ```tsx
 // Función con parámetros y retorno tipado
 function sumar(a: number, b: number): number {
@@ -393,35 +414,8 @@ export async function GET(req: NextRequest) {
   return NextResponse.json({ mensaje: "Hola desde la API de Next.js" });
 }
 ```
-# MAS OPCIONES
 
-## 11. Declaración de Variables
-En TypeScript, puedes declarar variables usando let, const o var, igual que en JavaScript. La diferencia es que puedes (y es recomendable) agregarles un tipo.
-
-```tsx
-let nombre: string = "Juan";
-const edad: number = 30;
-var esActivo: boolean = true;
-```
-
-
-
-Valores por Defecto: Puedes asignar valores por defecto en funciones o variables.
-
-```tsx
-function saludar(nombre: string = "Invitado"): string {
-  return `Hola, ${nombre}!`;
-}
-```
-
-## 17. Tipo de Retorno de Funciones
-Especifica qué tipo de valor devuelve la función. TypeScript puede inferirlo, pero declararlo explícitamente es recomendable.
-
-```tsx
-function sumar(a: number, b: number): number {
-  return a + b;
-}
-```
+<br>
 
 ## 18. Manejo de Nulos y Undefined
 TypeScript incluye el modo estricto (strictNullChecks), donde obliga a manejar null y undefined explícitamente.
@@ -443,6 +437,9 @@ let valor: string | null = null;
 let resultado = valor ?? "Valor por defecto"; // "Valor por defecto"
 ```
 
+<br>
+
+
 ## 19. Tipos Generics
 Los genéricos permiten crear funciones, clases o interfaces que funcionan con múltiples tipos sin perder el tipado.
 
@@ -454,6 +451,9 @@ function identidad<T>(valor: T): T {
 console.log(identidad<number>(42)); // 42
 console.log(identidad<string>("Hola")); // "Hola"
 ```
+
+<br>
+
 
 ## 20. Utilidades Avanzadas
 TypeScript tiene herramientas avanzadas para trabajar con tipos:
