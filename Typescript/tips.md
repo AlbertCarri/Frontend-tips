@@ -23,6 +23,104 @@ type Coordenadas = { lat: number; lon: number };
 const ubicacion: Coordenadas = { lat: -34.6037, lon: -58.3816 };
 ```
 <br>
+Puntos Clave:
+let y const son las formas más comunes (evita var porque tiene un alcance más confuso).
+
+TypeScript puede inferir tipos automáticamente si inicializas una variable durante su declaración:
+
+```tsx
+let ciudad = "Buenos Aires"; // TypeScript infiere el tipo como string
+```
+
+### Tipos Básicos
+TypeScript agrega tipos específicos para las variables. Los más comunes son:
+
+number: Números (enteros o decimales).
+
+string: Cadenas de texto.
+
+boolean: Verdadero o falso.
+
+any: Puede contener cualquier tipo (úsalo con cuidado, porque pierde el beneficio del tipado).
+
+null y undefined: Representan ausencia de valor.
+
+unknown: Similar a any, pero más seguro, ya que requiere que compruebes el tipo antes de usarlo.
+
+Ejemplo:
+
+```tsx
+let temperatura: number = 25.5;
+let mensaje: string = "¡Hola, TypeScript!";
+let activo: boolean = true;
+let sinTipo: any = "Podría ser cualquier cosa";
+```
+
+### Tipos Complejos
+Además de los básicos, puedes manejar tipos más complejos para modelar datos:
+
+Arreglos:
+
+```tsx
+let numeros: number[] = [1, 2, 3];
+let palabras: string[] = ["hola", "mundo"];
+```
+
+Tuplas: Arreglos con un número fijo de elementos y tipos específicos para cada posición:
+```tsx
+let coordenadas: [number, number] = [40.7128, -74.0060];
+```
+
+Objetos: Puedes usar interfaces o tipos para describirlos (más sobre esto adelante):
+
+```tsx
+let usuario: { nombre: string; edad: number } = { nombre: "Ana", edad: 25 };
+```
+
+### Tipos Personalizados
+Con interfaces o type, puedes definir tus propios tipos para hacer el código más legible.
+
+Interfaces:
+Sirven para definir la estructura de un objeto.
+
+```tsx
+interface Usuario {
+  nombre: string;
+  edad: number;
+  activo: boolean;
+}
+
+let usuario: Usuario = { nombre: "Carlos", edad: 33, activo: true };
+```
+
+Tipos (type):
+Similares a las interfaces, pero más flexibles (puedes usarlo para tuplas, uniones, etc.).
+
+```tsx
+type Coordenadas = [number, number];
+
+let posicion: Coordenadas = [40.7128, -74.0060];
+```
+
+### Uniones de Tipos
+Puedes permitir que una variable tenga más de un tipo usando el operador |.
+
+```tsx
+let identificador: string | number;
+identificador = "123";
+identificador = 123; // Ambos son válidos
+```
+
+### Tipos Opcionales y Valores por Defecto
+Propiedades Opcionales: Usa ? para declarar propiedades opcionales.
+
+```tsx
+interface Producto {
+  nombre: string;
+  precio: number;
+  descripcion?: string; // Puede estar o no
+}
+```
 
 ## 2. Funciones con Tipado en TypeScript
 
@@ -306,104 +404,7 @@ const edad: number = 30;
 var esActivo: boolean = true;
 ```
 
-Puntos Clave:
-let y const son las formas más comunes (evita var porque tiene un alcance más confuso).
 
-TypeScript puede inferir tipos automáticamente si inicializas una variable durante su declaración:
-
-```tsx
-let ciudad = "Buenos Aires"; // TypeScript infiere el tipo como string
-```
-
-## 12. Tipos Básicos
-TypeScript agrega tipos específicos para las variables. Los más comunes son:
-
-number: Números (enteros o decimales).
-
-string: Cadenas de texto.
-
-boolean: Verdadero o falso.
-
-any: Puede contener cualquier tipo (úsalo con cuidado, porque pierde el beneficio del tipado).
-
-null y undefined: Representan ausencia de valor.
-
-unknown: Similar a any, pero más seguro, ya que requiere que compruebes el tipo antes de usarlo.
-
-Ejemplo:
-
-```tsx
-let temperatura: number = 25.5;
-let mensaje: string = "¡Hola, TypeScript!";
-let activo: boolean = true;
-let sinTipo: any = "Podría ser cualquier cosa";
-```
-
-## 13. Tipos Complejos
-Además de los básicos, puedes manejar tipos más complejos para modelar datos:
-
-Arreglos:
-
-```tsx
-let numeros: number[] = [1, 2, 3];
-let palabras: string[] = ["hola", "mundo"];
-```
-
-Tuplas: Arreglos con un número fijo de elementos y tipos específicos para cada posición:
-```tsx
-let coordenadas: [number, number] = [40.7128, -74.0060];
-```
-
-Objetos: Puedes usar interfaces o tipos para describirlos (más sobre esto adelante):
-
-```tsx
-let usuario: { nombre: string; edad: number } = { nombre: "Ana", edad: 25 };
-```
-
-## 14. Tipos Personalizados
-Con interfaces o type, puedes definir tus propios tipos para hacer el código más legible.
-
-Interfaces:
-Sirven para definir la estructura de un objeto.
-
-```tsx
-interface Usuario {
-  nombre: string;
-  edad: number;
-  activo: boolean;
-}
-
-let usuario: Usuario = { nombre: "Carlos", edad: 33, activo: true };
-```
-
-Tipos (type):
-Similares a las interfaces, pero más flexibles (puedes usarlo para tuplas, uniones, etc.).
-
-```tsx
-type Coordenadas = [number, number];
-
-let posicion: Coordenadas = [40.7128, -74.0060];
-```
-
-## 15. Uniones de Tipos
-Puedes permitir que una variable tenga más de un tipo usando el operador |.
-
-```tsx
-let identificador: string | number;
-identificador = "123";
-identificador = 123; // Ambos son válidos
-```
-
-## 16. Tipos Opcionales y Valores por Defecto
-Propiedades Opcionales: Usa ? para declarar propiedades opcionales.
-
-```tsx
-interface Producto {
-  nombre: string;
-  precio: number;
-  descripcion?: string; // Puede estar o no
-}
-```
 
 Valores por Defecto: Puedes asignar valores por defecto en funciones o variables.
 
