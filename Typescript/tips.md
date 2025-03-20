@@ -297,21 +297,25 @@ export async function GET(req: NextRequest) {
 ```
 # MAS OPCIONES
 
-1. Declaración de Variables
+## 11. Declaración de Variables
 En TypeScript, puedes declarar variables usando let, const o var, igual que en JavaScript. La diferencia es que puedes (y es recomendable) agregarles un tipo.
 
-typescript
+```tsx
 let nombre: string = "Juan";
 const edad: number = 30;
 var esActivo: boolean = true;
+```
+
 Puntos Clave:
 let y const son las formas más comunes (evita var porque tiene un alcance más confuso).
 
 TypeScript puede inferir tipos automáticamente si inicializas una variable durante su declaración:
 
-typescript
+```tsx
 let ciudad = "Buenos Aires"; // TypeScript infiere el tipo como string
-2. Tipos Básicos
+```
+
+## 12. Tipos Básicos
 TypeScript agrega tipos específicos para las variables. Los más comunes son:
 
 number: Números (enteros o decimales).
@@ -328,34 +332,41 @@ unknown: Similar a any, pero más seguro, ya que requiere que compruebes el tipo
 
 Ejemplo:
 
-typescript
+```tsx
 let temperatura: number = 25.5;
 let mensaje: string = "¡Hola, TypeScript!";
 let activo: boolean = true;
 let sinTipo: any = "Podría ser cualquier cosa";
-3. Tipos Complejos
+```
+
+## 13. Tipos Complejos
 Además de los básicos, puedes manejar tipos más complejos para modelar datos:
 
 Arreglos:
 
-typescript
+```tsx
 let numeros: number[] = [1, 2, 3];
 let palabras: string[] = ["hola", "mundo"];
-Tuplas: Arreglos con un número fijo de elementos y tipos específicos para cada posición:
+```
 
-typescript
+Tuplas: Arreglos con un número fijo de elementos y tipos específicos para cada posición:
+```tsx
 let coordenadas: [number, number] = [40.7128, -74.0060];
+```
+
 Objetos: Puedes usar interfaces o tipos para describirlos (más sobre esto adelante):
 
-typescript
+```tsx
 let usuario: { nombre: string; edad: number } = { nombre: "Ana", edad: 25 };
-4. Tipos Personalizados
+```
+
+## 14. Tipos Personalizados
 Con interfaces o type, puedes definir tus propios tipos para hacer el código más legible.
 
 Interfaces:
 Sirven para definir la estructura de un objeto.
 
-typescript
+```tsx
 interface Usuario {
   nombre: string;
   edad: number;
@@ -363,100 +374,115 @@ interface Usuario {
 }
 
 let usuario: Usuario = { nombre: "Carlos", edad: 33, activo: true };
+```
+
 Tipos (type):
 Similares a las interfaces, pero más flexibles (puedes usarlo para tuplas, uniones, etc.).
 
-typescript
+```tsx
 type Coordenadas = [number, number];
 
 let posicion: Coordenadas = [40.7128, -74.0060];
-5. Uniones de Tipos
+```
+
+## 15. Uniones de Tipos
 Puedes permitir que una variable tenga más de un tipo usando el operador |.
 
-typescript
+```tsx
 let identificador: string | number;
 identificador = "123";
 identificador = 123; // Ambos son válidos
-6. Tipos Opcionales y Valores por Defecto
+```
+
+## 16. Tipos Opcionales y Valores por Defecto
 Propiedades Opcionales: Usa ? para declarar propiedades opcionales.
 
-typescript
+```tsx
 interface Producto {
   nombre: string;
   precio: number;
   descripcion?: string; // Puede estar o no
 }
+```
+
 Valores por Defecto: Puedes asignar valores por defecto en funciones o variables.
 
-typescript
+```tsx
 function saludar(nombre: string = "Invitado"): string {
   return `Hola, ${nombre}!`;
 }
-7. Tipo de Retorno de Funciones
+```
+
+## 17. Tipo de Retorno de Funciones
 Especifica qué tipo de valor devuelve la función. TypeScript puede inferirlo, pero declararlo explícitamente es recomendable.
 
-typescript
+```tsx
 function sumar(a: number, b: number): number {
   return a + b;
 }
-8. Manejo de Nulos y Undefined
+```
+
+## 18. Manejo de Nulos y Undefined
 TypeScript incluye el modo estricto (strictNullChecks), donde obliga a manejar null y undefined explícitamente.
 
 Solución: Comprobaciones o coalescencia nula
 Comprobación con if:
 
-typescript
+```tsx
 let valor: string | null = null;
 
 if (valor !== null) {
   console.log(valor.toUpperCase());
 }
+```
 Coalescencia Nula (??): Define un valor por defecto.
 
-typescript
+```tsx
 let valor: string | null = null;
 let resultado = valor ?? "Valor por defecto"; // "Valor por defecto"
-9. Tipos Generics
+```
+
+## 19. Tipos Generics
 Los genéricos permiten crear funciones, clases o interfaces que funcionan con múltiples tipos sin perder el tipado.
 
-typescript
+```tsx
 function identidad<T>(valor: T): T {
   return valor;
 }
 
 console.log(identidad<number>(42)); // 42
 console.log(identidad<string>("Hola")); // "Hola"
-10. Utilidades Avanzadas
+```
+
+## 20. Utilidades Avanzadas
 TypeScript tiene herramientas avanzadas para trabajar con tipos:
 
 Type Assertions: Úsalo para decirle a TypeScript que confíe en ti sobre un tipo.
 
-typescript
+```tsx
 let valor: any = "Hola";
 let longitud: number = (valor as string).length;
+```
+
 Tipos Literales: Limita el valor de una variable.
 
-typescript
+```tsx
 let direccion: "Norte" | "Sur" | "Este" | "Oeste";
 direccion = "Norte"; // Correcto
 direccion = "Arriba"; // Error
+```
+
 Utility Types: TypeScript tiene herramientas como Partial, Required, Pick, Omit, entre otros, para manipular tipos.
 
-typescript
+```tsx
 interface Usuario {
   nombre: string;
   edad: number;
 }
 
 let parcial: Partial<Usuario> = { nombre: "Juan" }; // Solo una parte del tipo
-Cómo Practicar
-Empieza con proyectos simples donde uses interfaces y tipos para describir tus datos.
+```
 
-Usa el modo strict en tsconfig.json para fortalecer tus habilidades.
-
-Experimenta con uniones, genéricos y utility types.
-
-Con estos conceptos, manejarás las variables de TypeScript con mucha más seguridad. ¡Sigue practicando y pregunta todo lo que necesites! 😊🚀
 
 
 
