@@ -97,7 +97,7 @@ pinguino.volar();
 
 # Métodos Alternativos en TypeScript  
 
-## Los otros métodos de creación de objetos en JavaScript, como los objetos literales, funciones constructoras y prototipos, también se pueden usar en TypeScript, pero con tipado.  
+### Los otros métodos de creación de objetos en JavaScript, como los objetos literales, funciones constructoras y prototipos, también se pueden usar en TypeScript, pero con tipado.  
 
 ## 1. Objetos Literales con Tipado
 ```ts
