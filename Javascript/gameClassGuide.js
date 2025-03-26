@@ -1,42 +1,4 @@
-<!DOCTYPE html>
-<html lang="en">
-<head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Mini Juego con Clases</title>
-    <style>
-        body {
-            margin: 0;
-            display: flex;
-            justify-content: center;
-            align-items: center;
-            height: 100vh;
-            background-color: #f0f0f0;
-        }
 
-        #game-area {
-            position: relative;
-            width: 400px;
-            height: 400px;
-            background-color: #ccc;
-            border: 2px solid #333;
-        }
-
-        .player, .target {
-            position: absolute;
-            width: 40px;
-            height: 40px;
-            background-color: red;
-        }
-
-        .player {
-            background-color: blue;
-        }
-    </style>
-</head>
-<body>
-    <div id="game-area"></div>
-    <script>
         class GameObject {
             constructor(elementId, color, x, y) {
                 this.element = document.createElement("div");
@@ -113,7 +75,5 @@
         }
 
         // Inicializa el juego
-        new Game("game-area");
-    </script>
-</body>
-</html>
+        new Game("game-area")
+
