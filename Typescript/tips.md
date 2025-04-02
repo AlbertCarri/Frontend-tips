@@ -198,6 +198,7 @@ const Boton: React.FC<BotonProps> = ({ texto, onClick }) => {
 
 ##  6. Tipado de Componentes con [export default]
 
+``Funcion normal``
 ```tsx
 interface CardProps {
   titulo: string;
@@ -205,6 +206,23 @@ interface CardProps {
 }
 
 export default function Card({ titulo, contenido }: CardProps): JSX.Element {
+  return (
+    <div className="card">
+      <h2>{titulo}</h2>
+      <p>{contenido}</p>
+    </div>
+  );
+}
+```
+``Función asíncrona``
+
+```tsx
+interface CardProps {
+  titulo: string;
+  contenido: string;
+}
+
+export default async function Card({ titulo, contenido }: CardProps): Promise<React.ReactElement> {
   return (
     <div className="card">
       <h2>{titulo}</h2>
